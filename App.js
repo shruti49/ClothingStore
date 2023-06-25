@@ -1,35 +1,37 @@
-import Directory from './src/components/directory/Directory';
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
+import Home from "./src/components/home/Home";
+import Header from "./src/components/header/Header";
 
 const App = () => {
-  const categories = [
-    {
-      id: 1,
-      title: 'hats',
-      imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
-    },
-    {
-      id: 2,
-      title: 'jackets',
-      imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
-    },
-    {
-      id: 3,
-      title: 'sneakers',
-      imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
-    },
-    {
-      id: 4,
-      title: 'womens',
-      imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-    },
-    {
-      id: 5,
-      title: 'mens',
-      imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
-    },
-  ];
-
-  return <Directory categories={categories} />;
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  );
 };
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    error: "",
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/shop",
+        element: <Home />,
+      },
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <RouterProvider router={appRouter} />
+);
 
 export default App;
