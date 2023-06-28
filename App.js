@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import Home from "./src/components/home/Home";
 import Header from "./src/components/header/Header";
-import SignIn from "./src/components/sign-in/SignIn";
+import Auth from "./src/components/authentication/Auth";
 
 const App = () => {
   return (
@@ -24,8 +24,8 @@ const appRouter = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/sign-in",
-        element: <SignIn />,
+        path: "/auth",
+        element: <Auth />,
       },
     ],
   },
